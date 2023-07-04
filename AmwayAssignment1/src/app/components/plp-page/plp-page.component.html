@@ -1,0 +1,81 @@
+<br>
+
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    <strong> {{error}}</strong>
+</div>
+<button (click)="addProdPage()">Add New Product</button>
+
+<div class="row card-div">
+    <div class="card border-dark mb-3" style="width: 18rem;" *ngFor="let prods of result">
+        <a routerLink="/products/{{prods.id}}" [state]="{'data':prods.id}">
+            <div class="card-header text-white bg-dark">{{prods.name}}</div>
+            <img src="{{prods.imageUrl}}">
+            <div class="card-body">
+                <h5 class="card-title">Name: {{prods.name}}</h5>
+                <p class="card-text">Id: {{prods.id}} <br> Quantity: {{prods.quantity}} <br>Price: {{prods.price |
+                    currency}}</p>
+            </div>
+        </a>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="container-fluid">
+    <div class="card" style="width: 10rem;">
+        <div *ngFor="let prods of result">
+            <a routerLink="/products/{{prods.id}}">
+                <img class="card-img-top" src="{{prods.imageUrl}}" height="50%" width="30px">
+                <div class="card-body bg-dark mb-3 text-white">
+                    <div class="row g-3 credentials">
+                        <div class="col-auto">
+                            <label class="col-form-label">ID : </label>
+                        </div>
+                        <div class="col-auto">
+                            <label class="col-form-label">{{prods.id}} </label>
+                        </div>
+                    </div>
+                    <div class="card-title row g-3 credentials">
+                        <div class="col-auto">
+                            <label class="col-form-label">Name : </label>
+                        </div>
+                        <div class="col-auto">
+                            <label class="col-form-label">{{prods.name}} </label>
+                        </div>
+                    </div>
+                    <div class="card-text row g-3 credentials">
+                        <div class="col-auto">
+                            <label class="col-form-label">Price : </label>
+                        </div>
+                        <div class="col-auto">
+                            <label class="col-form-label">{{prods.price}} </label>
+                        </div>
+                    </div>
+                    <div class="card-text row g-3 credentials">
+                        <div class="col-auto">
+                            <label class="col-form-label">Quantity : </label>
+                        </div>
+                        <div class="col-auto">
+                            <label class="col-form-label">{{prods.quantity}} </label>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <br>
+        </div>
+    </div> -->
+
+
+
+
+
+    <!-- <button (click)="addProdPage()">Add Product</button> -->
+
+</div>

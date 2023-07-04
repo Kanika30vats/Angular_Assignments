@@ -1,0 +1,65 @@
+<app-header-page></app-header-page>
+
+
+<div>
+    <h5>Total price : {{cart.totalPrice | currency}}</h5>
+</div>
+<!-- <h5>
+    <span *ngIf="(productCart$ | async).length" class="cart-placeholder" class="products-number">({{ (productCart$ | async).length }})</span>
+</h5> -->
+
+<button  (click)="deleteAll()">Remove All</button>
+<ul>
+    <li *ngFor="let cartItem of cart.items">
+      
+        
+        <div>{{cartItem.products.id}}</div>
+        <div>
+            <a routerLink="/products/{{cartItem.products.id}}">
+                {{cartItem.products.name}}
+            </a>
+        </div>
+        <div>
+            <select id="opt" #quantitySelect [(ngModel)]='optionVal' (change)="changeQuantity(cartItem, quantitySelect.value)">
+                {{cartItem.products.quantity}}
+                
+                <!-- <option [selected]="qtyFromPdpPage === true">{{qtyFromPdpPage}}</option> -->
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+           
+        </div>
+        <div>
+            {{cartItem.products.price}}
+        </div>
+        <div class="col-auto">
+            <img src="{{cartItem.products.imageUrl}}" height="100px" width="100px">
+        </div>
+        <br>
+        <button (click)="removeFromCart(cartItem)">Remove From Cart</button>
+    </li>
+</ul>
+
+<br>
+<br>
+
+<div class="checkout">
+    <!-- <div class="prod-count">
+        Total Products
+        {{cart.items.length}}
+    </div> -->
+    <div class="total-price">
+        Total Price
+        {{cart.totalPrice | currency}}
+    </div>
+</div>
+
+<app-footer-page></app-footer-page>

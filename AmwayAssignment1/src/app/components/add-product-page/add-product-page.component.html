@@ -1,0 +1,14 @@
+<form #addProd="ngForm" (ngSubmit)="addProduct(addProd.value)">
+    <label for="id">Product ID:</label><br>
+    <input type="text" id="id" name="id" ngModel><br>
+    <label for="name">Product Name:</label><br>
+    <input type="text" id="name" name="name" ngModel><br>
+    <label for="price">Price:</label><br>
+    <input type="text" id="price" name="price" ngModel><br>
+    <label for="quantity">Quantity:</label><br>
+    <input type="text" id="quantity" name="quantity" ngModel><br>
+    <img [src]="url" height="100px" width="100px"><br>
+    <input type="file" (change)="selectFile($event)" id="image" name="imageUrl" alt="insert image" ngModel>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form> 

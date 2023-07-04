@@ -1,0 +1,306 @@
+<div>
+    <div id="form-container">
+        <form [formGroup]="registrationForm" (ngSubmit)="onFormSubmit()">
+
+            <div class="row mb-3">
+                <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input formControlName="firstName" type="email" class="form-control" placeholder="First Name"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('firstName')?.errors}">
+                    <div
+                        *ngIf="!registrationForm.get('firstName')?.valid && registrationForm.get('firstName')?.errors && (registrationForm.get('firstName')?.dirty || registrationForm.get('firstName')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('firstName')?.hasError('required')">
+                            First Name is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('firstName')?.hasError('maxlength')">
+                            First Name should contain maximum 20 characters.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input formControlName="lastName" type="email" class="form-control" placeholder="Last Name"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('lastName')?.errors}">
+                    <div
+                        *ngIf="!registrationForm.get('lastName')?.valid && registrationForm.get('lastName')?.errors && (registrationForm.get('lastName')?.dirty || registrationForm.get('lastName')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('lastName')?.hasError('required')">
+                            Last Name is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('lastName')?.hasError('maxlength')">
+                            Last Name should contain maximum 20 characters.
+                        </small>
+                        <!-- <small class="text-danger" *ngIf="registrationForm.hasError('lengthError')">
+                            Total length of First Name and Last Name should not be more than 27 characters.
+                        </small> -->
+                    </div>
+                    <div
+                        *ngIf="registrationForm.get('lastName')?.valid && (registrationForm.get('lastName')?.dirty || registrationForm.get('lastName')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.hasError('lengthError')">
+                            Total length of First Name and Last Name should not be more than 27 characters.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3" formGroupName="dateVal">
+                <label for="date" class="col-sm-2 col-form-label">Date</label>
+                <div class="dropdown col-sm-3">
+                    <select formControlName="year" class="form-control" #yearSelectedVal
+                        (change)="getYearVal(yearSelectedVal.value)">
+                        <option *ngFor="let y of year" [value]="y">{{y}}</option>
+                    </select>
+                </div>
+                <div class="dropdown col-sm-3">
+                    <select formControlName="month" id="month" class="form-control" #monthSelectedVal
+                        (change)="getMonthVal(monthSelectedVal.value)">
+                        <option *ngFor="let m of month; let i = index" [value]="i">{{m}}</option>
+                    </select>
+                </div>
+                <div class="dropdown col-sm-3">
+                    <select formControlName="date" id="date" class="form-control">
+                        <option *ngFor="let d of date" [value]="d">{{d}}</option>
+                    </select>
+                </div>
+                <div class="row mb-3">
+                    <label for="date" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10"
+                        *ngIf="(!registrationForm.get('dateVal.year')?.valid || !registrationForm.get('dateVal.month')?.valid || !registrationForm.get('dateVal.date')?.valid) && (registrationForm.get('dateVal.year')?.errors || registrationForm.get('dateVal.month')?.errors || registrationForm.get('dateVal.date')?.errors) && ((registrationForm.get('dateVal.year')?.dirty || registrationForm.get('dateVal.year')?.touched) || ((registrationForm.get('dateVal.month')?.dirty || registrationForm.get('dateVal.month')?.touched)) || ((registrationForm.get('dateVal.date')?.dirty || registrationForm.get('dateVal.date')?.touched)))">
+                        <small class="text-danger" *ngIf="registrationForm.get('dateVal.year')?.hasError('required') || registrationForm.get('dateVal.month')?.hasError('required') || registrationForm.get('dateVal.date')?.hasError('required')">
+                            Date is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input formControlName="gender" class="form-check-input" type="radio" name="gender"
+                            id="inputGenderMale" value="male">
+                        <label class="form-check-label" for="inputGenderMale">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input formControlName="gender" class="form-check-input" type="radio" name="gender"
+                            id="inputGenderFemale" value="female">
+                        <label class="form-check-label" for="inputGenderFemale">
+                            Female
+                        </label>
+                    </div>
+                    <div
+                        *ngIf="!registrationForm.get('gender')?.valid && registrationForm.get('gender')?.errors && (registrationForm.get('gender')?.dirty || registrationForm.get('gender')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('gender')?.hasError('required')">
+                            Gender is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="zipcode" class="col-sm-2 col-form-label">Zipcode</label>
+                <div class="col-sm-10">
+                    <input formControlName="zipcode1" type="text" name="zipcode1" size="3"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('zipcode1')?.errors}" />
+                    &nbsp;
+                    <input formControlName="zipcode2" type="text" name="zipcode2" size="4"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('zipcode2')?.errors}" />
+                    <div
+                        *ngIf="!registrationForm.get('zipcode1')?.valid && registrationForm.get('zipcode1')?.errors && (registrationForm.get('zipcode1')?.dirty || registrationForm.get('zipcode1')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode1')?.hasError('required')">
+                            Zipcode1 is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode1')?.hasError('minlength')">
+                            Zipcode1 should contain 3 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode1')?.hasError('maxlength')">
+                            Zipcode1 should contain 3 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode1')?.hasError('pattern')">
+                            Zipcode1 should only contain numbers.
+                        </small>
+                    </div>
+                    <div
+                        *ngIf="!registrationForm.get('zipcode2')?.valid && registrationForm.get('zipcode2')?.errors && (registrationForm.get('zipcode2')?.dirty || registrationForm.get('zipcode2')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode2')?.hasError('required')">
+                            Zipcode2 is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode2')?.hasError('minlength')">
+                            Zipcode2 should contain 4 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode2')?.hasError('maxlength')">
+                            Zipcode2 should contain 4 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('zipcode2')?.hasError('pattern')">
+                            Zipcode2 should only contain numbers.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="phone" class="col-sm-2 col-form-label">Telephone</label>
+                <div class="col-sm-10">
+                    <input formControlName="countryCode" type="text" name="countryCode" size="3"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('countryCode')?.errors}" />
+                    &nbsp;
+                    <input formControlName="phone1" type="text" name="phone1" size="5"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('phone1')?.errors}" />
+                    &nbsp;
+                    <input formControlName="phone2" type="text" name="phone2" size="5"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('phone2')?.errors}" />
+                    <div
+                        *ngIf="!registrationForm.get('countryCode')?.valid && registrationForm.get('countryCode')?.errors && (registrationForm.get('countryCode')?.dirty || registrationForm.get('countryCode')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('countryCode')?.hasError('required')">
+                            Phone number1 is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('countryCode')?.hasError('minlength')">
+                            Phone number1 should contain 3 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('countryCode')?.hasError('maxlength')">
+                            Phone number1 should contain 3 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('countryCode')?.hasError('pattern')">
+                            Phone number1 should only contain numbers and should start with 0.
+                        </small>
+                    </div>
+                    <div
+                        *ngIf="!registrationForm.get('phone1')?.valid && registrationForm.get('phone1')?.errors && (registrationForm.get('phone1')?.dirty || registrationForm.get('phone1')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('phone1')?.hasError('required')">
+                            Phone number2 is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('phone1')?.hasError('minlength')">
+                            Phone number2 should contain minimum 3 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('phone1')?.hasError('maxlength')">
+                            Phone number2 should contain maxinum 4 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('phone1')?.hasError('pattern')">
+                            Phone number2 should only contain numbers and should NOT start with 0.
+                        </small>
+                    </div>
+                    <div
+                        *ngIf="!registrationForm.get('phone2')?.valid && registrationForm.get('phone2')?.errors && (registrationForm.get('phone2')?.dirty || registrationForm.get('phone2')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('phone2')?.hasError('required')">
+                            Phone number3 is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('phone2')?.hasError('minlength')">
+                            Phone number3 should contain 4 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('phone2')?.hasError('maxlength')">
+                            Phone number3 should contain 4 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('phone2')?.hasError('pattern')">
+                            Phone number3 should only contain numbers and should NOT contain all 0.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="townName" class="col-sm-2 col-form-label">Town Name</label>
+                <div class="col-sm-10">
+                    <input formControlName="townName" type="email" class="form-control" id="inputTownName"
+                        placeholder="Town Name"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('townName')?.errors}">
+                    <div
+                        *ngIf="!registrationForm.get('townName')?.valid && registrationForm.get('townName')?.errors && (registrationForm.get('townName')?.dirty || registrationForm.get('townName')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('townName')?.hasError('required')">
+                            Town Name is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('townName')?.hasError('minlength')">
+                            Town Name should contain minimum 3 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('townName')?.hasError('maxlength')">
+                            Town Name should contain maximum 20 characters.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="cityName" class="col-sm-2 col-form-label">City Name</label>
+                <div class="col-sm-10">
+                    <input formControlName="cityName" type="email" class="form-control" id="inputCityName"
+                        placeholder="City Name"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('cityName')?.errors}">
+                    <div
+                        *ngIf="!registrationForm.get('cityName')?.valid && registrationForm.get('cityName')?.errors && (registrationForm.get('cityName')?.dirty || registrationForm.get('cityName')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('cityName')?.hasError('required')">
+                            City Name is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('cityName')?.hasError('minlength')">
+                            City Name should contain minimum 3 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('cityName')?.hasError('maxlength')">
+                            City Name should contain maximum 10 characters.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input formControlName="email" type="email" class="form-control" id="inputEmail" placeholder="Email"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('email')?.errors}">
+                    <div
+                        *ngIf="!registrationForm.get('email')?.valid && registrationForm.get('email')?.errors && (registrationForm.get('email')?.dirty || registrationForm.get('email')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('email')?.hasError('required')">
+                            Email is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('email')?.hasError('email')">
+                            Enter valid email address.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input formControlName="password" type="password" class="form-control" id="inputPassword"
+                        placeholder="Password"
+                        [ngClass]="{'is-invalid':submitted && registrationForm.get('password')?.errors}">
+                    <div
+                        *ngIf="!registrationForm.get('password')?.valid && registrationForm.get('password')?.errors && (registrationForm.get('password')?.dirty || registrationForm.get('password')?.touched)">
+                        <small class="text-danger" *ngIf="registrationForm.get('password')?.hasError('required')">
+                            Password is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('password')?.hasError('minlength')">
+                            Password should contain minimum 6 characters.
+                        </small>
+                        <small class="text-danger" *ngIf="registrationForm.get('password')?.hasError('pattern')">
+                            Password should contain atleast one alphabet, one number and one special character.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-check">
+                <input formControlName="checkbox" class="form-check-input" type="checkbox" value="">
+                <label class="form-check-label" required>
+                    Accept Terms and conditions
+                </label>
+                <div
+                    *ngIf="!registrationForm.get('checkbox')?.valid && registrationForm.get('checkbox')?.errors && (registrationForm.get('checkbox')?.dirty || registrationForm.get('checkbox')?.touched)">
+                    <small class="text-danger" *ngIf="registrationForm.get('checkbox')?.hasError('required')">
+                        Check this box to continue.
+                    </small>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

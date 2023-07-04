@@ -1,0 +1,47 @@
+
+
+<div class="container">
+
+    
+    
+    <span class="id">
+        Id: {{singleProduct?.id}}
+    </span>
+    <br>
+    <span class="name">
+        Name: {{singleProduct?.name}}
+    </span>
+    <br>
+    <span class="price">
+        Price: {{singleProduct?.price| currency}}
+    </span>
+    <br>
+    <div>
+        <select #quantitySelect (change)="changeQuantity(quantitySelect.value)">
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+    </div>
+    
+    <span class="image">
+        <img src="{{singleProduct?.imageUrl}}" height="100px" width="100px">
+    </span>
+    <br>
+    <button (click)="addToCart()">Add To Cart</button>
+    
+
+    <br>
+    <br>
+    
+    <app-review-page (parentFunction)="parentFunction($event)" [revLen]="revlength"></app-review-page>
+</div>
+

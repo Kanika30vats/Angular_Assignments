@@ -1,0 +1,47 @@
+<div>
+    <div class="row mb-3" style="color: red;" *ngIf="isError; else elseBlock">{{error}}</div>
+
+    <ng-template #elseBlock>
+        <table class="table table-borderless ">
+            <!-- <tbody *ngIf="user$ | async as user"> -->
+            <tbody>
+                <tr>
+                    <th scope="row">First Name</th>
+                    <td>{{result.firstName}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Last Name</th>
+                    <td>{{result.lastName}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">DOB</th>
+                    <td>{{result.dateVal.year}} - {{result.dateVal.month}} - {{result.dateVal.date}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Gender</th>
+                    <td>{{result.gender}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Zipcode</th>
+                    <td>{{result.zipcode1}} &nbsp; {{result.zipcode2}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Telephone</th>
+                    <td>{{result.countryCode}} &nbsp; {{result.phone1}} &nbsp; {{result.phone2}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Town Name</th>
+                    <td>{{result.townName}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">City Name</th>
+                    <td>{{result.cityName}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>{{result.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+</div>

@@ -1,0 +1,11 @@
+<div class="row card-div">
+    <div class="card border-dark mb-3" style="width: 18rem;" *ngFor="let prods of result">
+        <div class="card-header text-white bg-dark"></div>
+        <img src="{{prods.imageUrl}}">
+        <div class="card-body">
+            <h5 class="card-title">Name: {{prods.name}}</h5>
+            <p class="card-text">Id: {{prods.id}} <br> Quantity: {{prods.quantity}} <br>Price: {{prods.price |
+                currency}}</p>
+        </div>
+    </div>
+</div>

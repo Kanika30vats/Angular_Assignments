@@ -1,0 +1,16 @@
+.config {
+    padding: 5%;
+    margin: 3%;
+}
+
+img {
+    padding: 5%;
+}
+
+#dropdown {
+    text-align: right;
+}
+
+ul {
+    list-style: none;
+}

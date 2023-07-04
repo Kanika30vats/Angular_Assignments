@@ -1,0 +1,47 @@
+<!-- <div *ngFor="let category of categories$ | async">
+    Category ID:
+    {{category.id}}
+    <br>
+    <h5>Category Name:
+        <a routerLink="/category/{{category.id}}">
+            {{category.name}}
+        </a>
+    </h5>
+    Sub Catgories :
+    <div *ngFor="let sc of category.subcategory">
+        <a routerLink="./{{category.id}}/{{sc.id}}"> {{sc.name}} </a>
+    </div>
+    <br>
+</div>
+ -->
+
+<div id="outer" class="container">
+    <div class="row">
+        <div class="col" *ngFor="let category of categories$ | async">
+           
+            <h5 class="text-uppercase">
+                <a routerLink="/category/{{category.id}}">
+                    {{category.name}}
+                </a>
+            </h5>
+            Sub Categories :
+            <div *ngFor="let sc of category.subCategory">
+                <a routerLink="./{{category.id}}/{{sc.id}}"> {{sc.name}} </a>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- <h5>
+        Total Products : {{(products$ | async)?.length}}
+    </h5> -->
+    
+    <app-plp-page [products]="products"></app-plp-page>
+    <!-- <app-plp-page></app-plp-page> -->
+ 
+  </div>
+
+  

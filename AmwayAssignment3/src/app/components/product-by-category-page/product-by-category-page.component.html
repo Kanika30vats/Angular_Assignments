@@ -1,0 +1,33 @@
+<div id="outer">
+   <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a routerLink="/category">All Categories</a></li>
+         <li class="breadcrumb-item active" aria-current="page">{{categoryName}}</li>
+      </ol>
+   </nav>
+
+   <div id="inner" *ngFor="let category of filteredCategories$ | async">
+      <h3>Subcatgories of {{category.name}} are:</h3>
+      <div *ngFor="let sc of category.subCategory">
+         <a routerLink="./{{sc.id}}"> {{sc.name}} </a>
+      </div>
+   </div>
+   <br>
+   <!-- <br><br>
+   <h5>Total products: {{(productsBySubCategories$ | async)?.length}}</h5> -->
+
+
+   <!-- <div *ngFor="let p of productsBySubCategories$ | async">
+    
+   {{p.id}}
+   <br>
+   {{p.name}}
+   <br>
+   <img src="{{p.imageUrl}}" height="250px">
+   
+</div> -->
+
+
+   <app-plp-page [products]="productsByCategory"></app-plp-page>
+
+</div>

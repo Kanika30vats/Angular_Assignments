@@ -1,0 +1,28 @@
+<div id="outer">
+
+  <!-- <p>product-by-subcategory-page works!</p>
+{{filteredProducts$ | async | json}} -->
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/category">All Categories</a></li>
+      <li class="breadcrumb-item"><a routerLink="/category/{{categoryId}}">{{categoryName}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{subCategoryName}}</li>
+    </ol>
+  </nav>
+  <br>
+  <!-- <h5>Total products: {{(filteredProducts$ | async)?.length}}</h5> -->
+
+
+  <!-- <div *ngFor="let p of filteredProducts$ | async">
+    
+    {{p.id}}
+    <br>
+    {{p.name}}
+    <br>
+    <img src="{{p.imageUrl}}" height="250px">
+    
+</div> -->
+
+  <app-plp-page [products]="productsBySubCategory"></app-plp-page>
+</div>

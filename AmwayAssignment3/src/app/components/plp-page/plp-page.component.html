@@ -1,0 +1,141 @@
+<div class="container">
+
+    <div class="row">
+        <div id="dropdown">
+            <label for="cars">Sort By : </label>
+
+            <select name="dropdown" #sortBy (change)="sort(sortBy.value)">
+                <option value="byIdAsc">Default</option>
+                <option value="byPriceAsc">Price Asc</option>
+                <option value="byPriceDesc">Price Desc</option>
+                <option value="byNameAsc">NameAsc</option>
+                <option value="byNameDesc">NameDesc</option>
+                <option value="byDateAsc">DateAsc</option>
+                <option value="byDateDesc">DateDesc</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+
+
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Stock
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <!-- <a routerLink="/category" [queryParams]="{inStock:true}"> -->
+                                <li>
+                                    <input type="checkbox" value="inStock" #inStock (change)="onCheckboxChange($event)">
+
+                                    <!-- </a> -->
+
+                                    <label>&nbsp; In stock</label><br>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="outStock" #outStock
+                                        (change)="onCheckboxChange($event)">
+                                    <label>&nbsp; Out of stock</label><br>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Price Ranges
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <!-- <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                            <label for="vehicle1">&nbsp; 10-20000</label><br>
+                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                            <label for="vehicle2">&nbsp; 20001-40000</label><br>
+                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                            <label for="vehicle3">&nbsp; 40001-60000</label><br>
+                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                            <label for="vehicle3">&nbsp; 60001-80000</label><br>
+                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                            <label for="vehicle3">&nbsp; 80001-100000</label><br>
+                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                            <label for="vehicle3">&nbsp; 100001-120000</label><br> -->
+
+                            <ul>
+                                <li *ngFor="let eachCheckbox of priceCheckboxArray">
+                                    <input type="{{eachCheckbox.type}}" value="{{eachCheckbox.id}}"
+                                        (change)="onCheckboxChange($event)">
+                                    {{eachCheckbox.price}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+        <div class="col-sm-9">
+            <div>
+                <h5>
+                    Total Products : {{(products)?.length}}
+                </h5>
+
+                <div class="search-results" infinite-scroll (scrolled)="onScrollDown($event)"
+                    [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50">
+
+                    <!-- <div class="list-group">
+                    <div *ngFor="let prod of productsToShow">
+        
+                        {{prod.id}}
+                        <br>
+                        {{prod.name}}
+                        <br>
+                        <img src="{{prod.imageUrl}}" height="250px">
+        
+                    </div>
+                </div> -->
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-5 config" *ngFor="let prod of productsToShow">
+                                <img src="{{prod.imageUrl}}" height="250px">
+                                <br>
+                                Name: {{prod.name}}
+                                <br>
+                                Id: {{prod.id}}
+                                <br>
+                                Price: {{prod.price}}
+                                <br>
+                                Date: {{prod.date}}
+                                <br>
+                                Is Available in Stock: {{prod.isAvailable}}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+                        <p style="font-size: 20px; color: black">Loading...</p>
+                    </ngx-spinner>
+
+                </div>
+
+
+
+
+            </div>
+        </div>

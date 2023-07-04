@@ -1,0 +1,36 @@
+<h6>Add a review</h6>
+<div>
+    <form [formGroup]="reviewForm" (ngSubmit)="addReview()" novalidate>
+        <input type="text" placeholder="reviewName" formControlName="reviewName">
+        <br>
+
+        <div *ngIf="!reviewName?.valid && (reviewName?.dirty ||reviewName?.touched)">
+            <div style="color: red;">
+                 Name is required
+            </div>
+        </div>
+
+        <textarea placeholder="comment" formControlName="review"></textarea>
+        <div *ngIf="!reviewFormField?.valid && (reviewFormField?.dirty || reviewFormField?.touched)">
+            <div style="color: red;">
+                 Comment is required
+            </div>
+        </div>
+        <br>
+        <button [disabled]="!reviewForm.valid">Submit review</button>
+    </form>
+</div>
+
+<div *ngIf="flag ; else elseBlock">
+
+
+    <div *ngFor="let items of reviewdata">
+        Name:{{items.reviewName}}
+        <br>
+        Review published:{{items.review}}
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <button (click)="allReviewPageNavigate()">Show All Reviews</button>
+</ng-template>

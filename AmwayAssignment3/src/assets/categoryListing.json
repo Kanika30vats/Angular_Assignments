@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "name": "electronics",
+        "subCategory": [
+            {
+                "id": "1001",
+                "name": "mobiles"
+            },
+            {
+                "id": "1002",
+                "name": "laptops"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "home",
+        "subCategory": [
+            {
+                "id": "2001",
+                "name": "furniture"
+            },
+            {
+                "id": "2002",
+                "name": "electricals"
+            },
+            {
+                "id": "2003",
+                "name": "bags"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "utility",
+        "subCategory": [
+            {
+                "id": "3001",
+                "name": "sports"
+            },
+            {
+                "id": "3002",
+                "name": "toys"
+            },
+            {
+                "id": "3003",
+                "name": "schoolBackpacks"
+            }
+        ]
+    }
+]

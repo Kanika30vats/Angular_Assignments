@@ -1,0 +1,102 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "abc",
+      "price": 10000,
+      "quantity": 10,
+      "imageUrl": "assets/img/Galaxy A73.png"
+    },
+    {
+      "id": "2",
+      "name": "abcd",
+      "price": 12000,
+      "quantity": 20,
+      "imageUrl": "assets/img/Galaxy F23.png"
+    },
+    {
+      "id": "3",
+      "name": "xhs",
+      "price": 13000,
+      "quantity": 30,
+      "imageUrl": "assets/img/Galaxy M32.png"
+    },
+    {
+      "id": "4",
+      "name": "jjj",
+      "price": "12090",
+      "quantity": "98",
+      "imageUrl": "assets/img/Galaxy S21 FE.png"
+    },
+    {
+      "id": "5",
+      "name": "hjb",
+      "price": "19889",
+      "quantity": "87",
+      "imageUrl": "assets/img/Galaxy A73.png"
+    },
+    {
+      "id": "6",
+      "name": "hjvjh",
+      "price": "87867",
+      "quantity": "7",
+      "imageUrl": "assets/img/Galaxy F23.png"
+    },
+    {
+      "id": "7",
+      "name": "jbkjb",
+      "price": "6756",
+      "quantity": "6",
+      "imageUrl": "assets/img/Iphone SE.png"
+    },
+    {
+      "id": "8",
+      "name": "vhvj",
+      "price": "546546",
+      "quantity": "4",
+      "imageUrl": "assets/img/Galaxy A73.png"
+    },
+    {
+      "id": "10",
+      "name": "mbkj",
+      "price": "8787",
+      "quantity": "7",
+      "imageUrl": "assets/img/Galaxy A73.png"
+    },
+    {
+      "id": "18",
+      "name": "gg1gg1",
+      "price": "900",
+      "quantity": "5",
+      "imageUrl": "assets/img/Galaxy A73.png"
+    },
+    {
+      "id": "11",
+      "name": "ads",
+      "price": "20000",
+      "quantity": "7",
+      "imageUrl": "assets/img/Galaxy S21 FE.png"
+    },
+    {
+      "id": "19",
+      "name": "hgchgch",
+      "price": "7000",
+      "quantity": "6",
+      "imageUrl": "assets/img/Galaxy M32.png"
+    },
+    {
+      "id": "70",
+      "name": "iiii",
+      "price": "90",
+      "quantity": "90",
+      "imageUrl": "assets/img/Galaxy M32.png"
+    },
+    {
+      "id": "89",
+      "name": "kkjnkjn",
+      "price": "1800",
+      "quantity": "7",
+      "imageUrl": "assets/img/Galaxy A73.png"
+    }
+  ]
+}

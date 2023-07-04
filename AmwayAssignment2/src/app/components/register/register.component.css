@@ -1,0 +1,13 @@
+#form-container{
+    width: 50%;
+    margin-left: 20%;
+    margin-top: 10%;
+}
+
+input.ng-invalid.ng-touched{
+    border-color: red;
+}
+
+select.ng-invalid.ng-touched{
+    border-color: red;
+}
